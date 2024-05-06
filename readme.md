@@ -1,6 +1,6 @@
 # Laravel Advanced Nova Media Library
 
-This package is an enhancement of the original [spatie's media library package](https://github.com/spatie/laravel-medialibrary). It manages images, fixes issues such as cropbox crashes during multiple images uploading, and allows for reordering images via drag and drop.
+This package is an enhancement of the original [advanced-nova-media-library](https://github.com/ebess/advanced-nova-media-library). It manages images, fixes issues such as cropbox crashes during multiple images uploading, and allows for reordering images via drag and drop.
 
 ##### Table of Contents
 
