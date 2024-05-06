@@ -1,6 +1,6 @@
 <?php
 
-namespace Ebess\AdvancedNovaMediaLibrary\Fields;
+namespace NodyIQ\AdvancedNovaMediaLibrary\Fields;
 
 // @TODO Rule contract is deprecated since laravel/framework v10.0, replace with ValidationRule once min version is 10.
 use Illuminate\Contracts\Validation\Rule;
@@ -163,7 +163,7 @@ class Media extends Field
      */
     protected function fillAttributeFromRequest(NovaRequest $request, $requestAttribute, $model, $attribute)
     {
-        $key = str_replace($attribute, '__media__.'.$attribute, $requestAttribute);
+        $key = str_replace($attribute, '__media__.' . $attribute, $requestAttribute);
         $data = $request[$key] ?? [];
 
         if ($attribute === 'ComputedField') {
@@ -227,7 +227,6 @@ class Media extends Field
 
                     $fileName = $file->getClientOriginalName();
                     $fileExtension = $file->getClientOriginalExtension();
-
                 } else {
                     $media = $this->makeMediaFromVaporUpload($file, $model);
 
@@ -239,7 +238,7 @@ class Media extends Field
                     $media->withResponsiveImages();
                 }
 
-                if (! empty($this->customHeaders)) {
+                if (!empty($this->customHeaders)) {
                     $media->addCustomHeaders($this->customHeaders);
                 }
 
@@ -330,7 +329,7 @@ class Media extends Field
             ->first()
             ->singleFile ?? false;
 
-        $this->withMeta(['multiple' => ! $isSingle]);
+        $this->withMeta(['multiple' => !$isSingle]);
     }
 
     public function serializeMedia(\Spatie\MediaLibrary\MediaCollections\Models\Media $media): array

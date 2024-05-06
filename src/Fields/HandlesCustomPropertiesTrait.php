@@ -1,6 +1,6 @@
 <?php
 
-namespace Ebess\AdvancedNovaMediaLibrary\Fields;
+namespace NodyIQ\AdvancedNovaMediaLibrary\Fields;
 
 use Laravel\Nova\Fields\Field;
 use Laravel\Nova\Http\Requests\NovaRequest;
@@ -40,7 +40,7 @@ trait HandlesCustomPropertiesTrait
     private function fillCustomPropertiesFromRequest(NovaRequest $request, string $requestAttribute, HasMedia $model, string $collection): void
     {
         // If we are dealing with nested resources or multiple panels, media fields are prefixed.
-        $key = str_replace($collection, '__media__.'.$collection, $requestAttribute);
+        $key = str_replace($collection, '__media__.' . $collection, $requestAttribute);
 
         $mediaItems = $model->getMedia($collection);
         $items = $request->input($key, []);
@@ -55,7 +55,7 @@ trait HandlesCustomPropertiesTrait
                 return $value instanceof UploadedFile || $value instanceof FileBag;
             })
             ->each(function ($id, int $index) use ($request, $mediaItems, $collection, $requestAttribute) {
-                if (! $media = $mediaItems->where('id', $id)->first()) {
+                if (!$media = $mediaItems->where('id', $id)->first()) {
                     return;
                 }
 
@@ -80,7 +80,7 @@ trait HandlesCustomPropertiesTrait
         /** @var Field $field */
         foreach ($this->customPropertiesFields as $field) {
             // If we are dealing with nested resources or multiple panels, custom property fields are prefixed.
-            $key = str_replace($collection, '__media-custom-properties__.'.$collection, $requestAttribute);
+            $key = str_replace($collection, '__media-custom-properties__.' . $collection, $requestAttribute);
             $targetAttribute = "custom_properties->{$field->attribute}";
             $requestAttribute = "{$key}.{$index}.{$field->attribute}";
 
